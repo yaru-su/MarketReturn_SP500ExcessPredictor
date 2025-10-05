@@ -40,20 +40,20 @@ A mock test set representing the structure of the unseen test set. The test set 
 ## Methodology
 
 ### 1. Feature Engineering
-- Select relevant features from raw data.  
+- Select relevant features from raw data.
 - Normalize features to improve model stability and interpretability.
 
 ### 2. Model Training
-- Use **ElasticNetCV** to automatically tune `alpha` and `l1_ratio` via cross-validation.  
-- Fit the model on scaled training data.  
-- Save the trained model for inference.
+- Use **ElasticNetCV** on the training set to automatically select the optimal `alpha`.
+- Fit a final **ElasticNet** model using the selected hyperparameters on the full scaled training data.
+- Save the fitted model for inference.
 
 ### 3. Prediction & Signal Generation
-- Apply the trained **ElasticNet** or **ElasticNetCV** model to test data.  
-- Predict excess returns for the S&P 500.  
+- Apply the trained **ElasticNet** model to the test data.
+- Predict excess returns for the S&P 500.
 - Convert predicted returns into trading signals (+1 for long, -1 for short, 0 for neutral).
 
 ### 4. Evaluation
-- Compare predicted signals with actual S&P 500 returns.  
-- Plot cumulative returns over time.  
+- Compare predicted signals with actual S&P 500 returns.
+- Plot cumulative returns over time.
 - Calculate performance metrics such as accuracy, Sharpe ratio, or cumulative return.
